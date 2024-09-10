@@ -5,7 +5,7 @@ use crate::ElevenLabsClient;
 
 #[derive(Serialize)]
 pub struct TextToSpeech {
-    text: String,
+    pub text: String,
 }
 
 impl ElevenLabsClient {

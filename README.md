@@ -8,12 +8,13 @@ A Rust client library for the ElevenLabs API, providing easy access to state-of-
 
 - Easy-to-use Rust interface for ElevenLabs API
 - Asynchronous API using `tokio`
-- Comprehensive error handling
-- TODO: Support for all major ElevenLabs endpoints:
-  - Text-to-Speech generation
-  - Voice management
-  - User information retrieval
-- Streaming audio support
+- Comprehensive error handling 🔜
+- Support for all major ElevenLabs endpoints including 🚧:
+  - Text-to-Speech generation 🚧 (Partial)
+  - Voice management 🚧 (Partial)
+    - List available voices ✅
+  - User information retrieval 🚫
+- TODO: Streaming audio support 🚫
 
 ## Installation 📦
 
@@ -49,9 +50,9 @@ async fn main() -> Result<()> {
 ### List Available Voices
 
 ```rust
-let voices = client.list_voices().await?;
+let voices = client.voices().await?;
 for voice in voices {
-    println!("Voice ID: {}, Name: {}", voice.id, voice.name);
+    println!("Voice ID: {}, Name: {}", voice.voice_id, voice.name);
 }
 ```
 

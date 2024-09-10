@@ -1,5 +1,6 @@
 use reqwest::Method;
 use serde::Serialize;
+use crate::error::Result;
 
 pub struct ElevenLabsClient {
     pub client: reqwest::Client,
@@ -25,7 +26,7 @@ impl ElevenLabsClient {
             .header("xi-api-key", &self.api_key)
     }
 
-    pub async fn get(&self, path: &str) -> Result<reqwest::Response, reqwest::Error> {
+    pub async fn get(&self, path: &str) -> Result<reqwest::Response> {
         let response = self.builder(Method::GET, &path).send().await?;
         Ok(response)
     }
@@ -34,7 +35,7 @@ impl ElevenLabsClient {
         &self,
         path: &str,
         body: &T,
-    ) -> Result<reqwest::Response, reqwest::Error> {
+    ) -> Result<reqwest::Response> {
         let response = self.builder(Method::POST, &path).json(body).send().await?;
         Ok(response)
     }
